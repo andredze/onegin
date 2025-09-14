@@ -1,0 +1,21 @@
+#ifndef COMMON_H
+#define COMMON_H
+
+#include <TXLib.h>
+#include <assert.h>
+#include <stdio.h>
+#include <string.h>
+
+const int MAXLEN = 500;
+
+const int STRINGS_COUNT = 17;
+
+const size_t MAX_LINE_LEN = 36;
+
+typedef struct FileInfo {
+    char data[STRINGS_COUNT][MAX_LINE_LEN];
+    int strings_count = STRINGS_COUNT;
+    size_t max_len = MAX_LINE_LEN;
+} FileInfo_t;
+
+#endif // COMMON_H
