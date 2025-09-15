@@ -40,6 +40,13 @@ int main()
     }
     fclose(fp);
 
+    // char_strswp test
+    char str1[] = {'b', 'a', 'n', 'a', 'n', 'a', '\0'};
+    char str2[] = {'a', 'p', 'p', 'l', 'e', '\0', '\0'};
+    char_strswp(str1, str2);
+    printf("%s\n", str1);
+    printf("%s\n", str2);
+
     print_text(&OneginInfo);
 
     sort_text_by_start(&OneginInfo);
@@ -66,13 +73,16 @@ int sort_text_by_start(FileInfo_t* BookInfo)
     assert(BookInfo != NULL);
     assert(BookInfo->data != NULL);
 
-    int j = 0;
+    int second = 0;
 
-    for (int i = 0; i < STRINGS_COUNT; i++)
+    for (int first = 0; first < STRINGS_COUNT; first++)
     {
-        for (j = 0; j < STRINGS_COUNT; j++)
+        for (second = 0; second < STRINGS_COUNT; second++)
         {
-            string_strswp(BookInfo->data[j], BookInfo->data[i]);
+            if (strcmp(BookInfo->data[second], BookInfo->data[first]) > 0)
+            {
+                char_strswp(BookInfo->data[second], BookInfo->data[first]);
+            }
         }
     }
     return 0;

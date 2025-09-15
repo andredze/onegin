@@ -10,7 +10,7 @@ const int MAXLEN = 500;
 
 const int STRINGS_COUNT = 17;
 
-const size_t MAX_LINE_LEN = 36;
+const size_t MAX_LINE_LEN = 47;
 
 typedef struct FileInfo {
     char data[STRINGS_COUNT][MAX_LINE_LEN];
