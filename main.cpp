@@ -3,7 +3,7 @@
 
 int count_file(FILE* stream, FileInfo_t* BookInfo);
 
-int read_text(FILE* stream, FileInfo_t* BookInfo);
+int parse_text(FILE* stream, FileInfo_t* BookInfo);
 
 int sort_text_by_start(FileInfo_t* BookInfo);
 
@@ -11,7 +11,8 @@ void print_text(FileInfo_t* BookInfo);
 
 int main()
 {
-    // TODO отдельная функция input("file.txt") = fopen + count + read
+    // TODO отдельная функция input("file.txt") = fopen + count + parse
+    // TODO output in file
     FILE* fp = fopen("onegin_part.txt", "r");
 
     if (fp == NULL)
@@ -34,7 +35,7 @@ int main()
     printf("MAX_LINE_LEN = %zu\n\n", OneginInfo.max_len);
     // MAX_LINE_LEN = 36
 
-    if (read_text(fp, &OneginInfo) == EOF)
+    if (parse_text(fp, &OneginInfo) == EOF)
     {
         return EOF;
     }
@@ -77,11 +78,11 @@ int sort_text_by_start(FileInfo_t* BookInfo)
 
     for (int first = 0; first < STRINGS_COUNT; first++)
     {
-        for (second = 0; second < STRINGS_COUNT; second++)
+        for (second = first + 1; second < STRINGS_COUNT; second++)
         {
-            if (strcmp(BookInfo->data[second], BookInfo->data[first]) > 0)
+            if (strcmp_by_start(BookInfo->data[first], BookInfo->data[second]) > 0)
             {
-                char_strswp(BookInfo->data[second], BookInfo->data[first]);
+                char_strswp(BookInfo->data[first], BookInfo->data[second]);
             }
         }
     }
@@ -123,7 +124,7 @@ int count_file(FILE* stream, FileInfo_t* BookInfo)
     return EOF;
 }
 
-int read_text(FILE* stream, FileInfo_t* BookInfo)
+int parse_text(FILE* stream, FileInfo_t* BookInfo)
 {
     assert(BookInfo != NULL);
     assert(BookInfo->data != NULL);
