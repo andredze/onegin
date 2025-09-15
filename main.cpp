@@ -52,6 +52,14 @@ int main()
     printf("strcmp34: %d\n", strcmp_by_end(str3, str4));
     */
 
+
+//     FILE* fp = fopen("onegin.txt", "r");
+//
+//     if (fp == NULL)
+//     {
+//         printf("Error with opening the file\n");
+//         return EOF;
+//     }
 //     char* ptr_data[STRINGS_COUNT] = {};
 //     if (parse_text_ptr(fp, ptr_data) == EOF)
 //     {
@@ -61,6 +69,7 @@ int main()
 //     fclose(fp);
 //
 //     sort_text_ptr(ptr_data);
+//     FILE* output = fopen("output.txt", "w");
 //     print_text_ptr(ptr_data, output);
 //
 //     free_ptr_data(ptr_data);

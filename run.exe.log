@@ -1,0 +1,129 @@
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Coding\onegin\run.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF635F22070 (64-bit), Flags: Cmdre0, Thread: 0x692C (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF635C8B831 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txError()
+# 1 0x00007FF635C8BB58 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txOnSignal()
+# 2 0x00007FFF69CE1881 in C:\Windows\System32\ucrtbase.dll: raise()
+# 3 0x00007FFF69CE2851 in C:\Windows\System32\ucrtbase.dll: abort()
+# 4 0x00007FFF69CE4140 in C:\Windows\System32\ucrtbase.dll: get_wpgmptr()
+# 5 0x00007FFF69CE4331 in C:\Windows\System32\ucrtbase.dll: assert()
+# 6 0x00007FF635C1FF68 in D:\Coding\onegin\run.exe: strcmp_by_end()
+# 7 0x00007FF635C400A1 in D:\Coding\onegin\run.exe: sort_text()
+# 8 0x00007FF635BFFEFE in D:\Coding\onegin\run.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	D:\txlib\TX\TXLib.h
+Compiled:	Sep 15 2025 21:49:06, GNU g++ 15.1.0, std=201703L, MinGW-W64 Runtime 12.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Sep 15 2025 21:49:36
+
+Run file:	D:\Coding\onegin\run.exe
+Directory:	D:\Coding\onegin
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Coding\onegin\run.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7D9F32070 (64-bit), Flags: Cmdre0, Thread: 0x6CD0 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7D9C9B881 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txError()
+# 1 0x00007FF7D9C9BBA8 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txOnSignal()
+# 2 0x00007FFF69CE1881 in C:\Windows\System32\ucrtbase.dll: raise()
+# 3 0x00007FFF69CE2851 in C:\Windows\System32\ucrtbase.dll: abort()
+# 4 0x00007FFF69CE4140 in C:\Windows\System32\ucrtbase.dll: get_wpgmptr()
+# 5 0x00007FFF69CE4331 in C:\Windows\System32\ucrtbase.dll: assert()
+# 6 0x00007FF7D9C2FFB3 in D:\Coding\onegin\run.exe: strcmp_by_end()
+# 7 0x00007FF7D9C500F1 in D:\Coding\onegin\run.exe: sort_text()
+# 8 0x00007FF7D9C0FEFE in D:\Coding\onegin\run.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	D:\txlib\TX\TXLib.h
+Compiled:	Sep 15 2025 21:52:53, GNU g++ 15.1.0, std=201703L, MinGW-W64 Runtime 12.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Sep 15 2025 21:53:36
+
+Run file:	D:\Coding\onegin\run.exe
+Directory:	D:\Coding\onegin
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Coding\onegin\run.exe,
+
+ВНЕЗАПНО: signal (22, 0x00): SIGABRT: Аварийное завершение программы, вызвана функция abort(). 
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF706582070 (64-bit), Flags: Cmdre0, Thread: 0x6D58 (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7062EB831 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txError()
+# 1 0x00007FF7062EBB58 in D:\Coding\onegin\run.exe: (anonymous namespace)::TX::_txOnSignal()
+# 2 0x00007FFF69CE1881 in C:\Windows\System32\ucrtbase.dll: raise()
+# 3 0x00007FFF69CE2851 in C:\Windows\System32\ucrtbase.dll: abort()
+# 4 0x00007FFF69CE4140 in C:\Windows\System32\ucrtbase.dll: get_wpgmptr()
+# 5 0x00007FFF69CE4331 in C:\Windows\System32\ucrtbase.dll: assert()
+# 6 0x00007FF70627FE5A in D:\Coding\onegin\run.exe: strcmp_by_end()
+# 7 0x00007FF7062A00A1 in D:\Coding\onegin\run.exe: sort_text()
+# 8 0x00007FF70625FEFE in D:\Coding\onegin\run.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	D:\txlib\TX\TXLib.h
+Compiled:	Sep 15 2025 21:55:36, GNU g++ 15.1.0, std=201703L, MinGW-W64 Runtime 12.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Sep 15 2025 21:55:42
+
+Run file:	D:\Coding\onegin\run.exe
+Directory:	D:\Coding\onegin
+
+--------------------------------------------------

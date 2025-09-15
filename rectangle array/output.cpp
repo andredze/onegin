@@ -5,7 +5,7 @@ void print_text(FileInfo_t* BookInfo)
     assert(BookInfo != NULL);
     assert(BookInfo->data != NULL);
 
-    FILE* output = fopen("output.txt", "w");
+    FILE* output = fopen("D:/Coding/onegin/output.txt", "w");
 
     assert(output != NULL);
 

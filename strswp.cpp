@@ -51,6 +51,9 @@ int strcmp_by_end(char* str1, char* str2)
     int i1 = len1 - 1;
     int i2 = len2 - 1;
 
+    assert(i1 >= 0);
+    assert(i2 >= 0);
+
     for (; i1 > 0 && i2 > 0; i1--, i2--)
     {
         while (not_symbol(str1[i1]))
@@ -70,9 +73,6 @@ int strcmp_by_end(char* str1, char* str2)
             return my_tolower(str1[i1]) - my_tolower(str2[i2]);
         }
     }
-
-    assert(i1 >= 0);
-    assert(i2 >= 0);
 
     return len1 - len2;
 }
