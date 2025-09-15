@@ -5,17 +5,26 @@
 #include "rectangle array/output.h"
 #include "text_ptr.h"
 
+int run_rect();
+
+int run_ptr();
+
 int main()
 {
-    // TODO отдельная функция input("file.txt") = fopen + count + parse
-    // input, output, sort,
-    // TODO для массива с указателями; поменять константы на переменные (и мб каллок)
-    // через каллок размер стрингс_коунт найти
-    // указатель на ф-ии
-    // naming, codestyle
-    // return 1 при ошибках
-    // тесты
+    // if (run_rect())
+    // {
+    //     return 1;
+    // }
+    if (run_ptr())
+    {
+        return 1;
+    }
 
+    return 0;
+}
+
+int run_rect()
+{
     FileInfo_t OneginInfo = {.data = {{}},
                              .strings_count = 0,
                              .max_len = 0};
@@ -24,56 +33,30 @@ int main()
     sort_text(&OneginInfo);
     print_text(&OneginInfo);
 
-    // char_strswp test
-    /*
-    char str1[] = {'b', 'a', 'n', 'a', 'n', 'a', '\0'};
-    char str2[] = {'a', 'p', 'p', 'l', 'e', '\0', '\0'};
-    char_strswp(str1, str2);
-    printf("str1: %s\n", str1);
-    printf("str2: %s\n\n", str2);
-    */
+    return 0;
+}
 
-    // llu_strswp test
-    /*
-    char str2[] = {'b', 'a', 'n', 'a', 'n', 'a', 'n', 'a', 'n', 'a', '\0'};
-    char str1[] = {'z', 'p', 'p', 'l', 'e', 'z', 'p', 'l', 'e', '\0', '\0'};
-    llu_strswp(str1, str2);
-    printf("str1: %s\n", str1);
-    printf("str2: %s\n\n", str2);
-    */
+int run_ptr()
+{
+    FILE* fp = fopen("onegin.txt", "r");
 
-    // strcmp_by_end test
-    /*
-    int test = ('я' > 'а');
-    printf("\'я\' > \'а\': %d\n", test);
+    if (fp == NULL)
+    {
+        printf("Error with opening the file\n");
+        return EOF;
+    }
+    char* ptr_data[STRINGS_COUNT] = {};
+    if (parse_text_ptr(fp, ptr_data) == EOF)
+    {
+        return EOF;
+    }
 
-    char str3[40] = "Вниманье дружбы возлюбя,\r\n";
-    char str4[40] = "ааВысоких дум и простотыаааа;\r\n";
-    printf("strcmp34: %d\n", strcmp_by_end(str3, str4));
-    */
+    fclose(fp);
 
+    sort_text_ptr(ptr_data);
+    FILE* output = fopen("output.txt", "w");
+    print_text_ptr(ptr_data, output);
 
-//     FILE* fp = fopen("onegin.txt", "r");
-//
-//     if (fp == NULL)
-//     {
-//         printf("Error with opening the file\n");
-//         return EOF;
-//     }
-//     char* ptr_data[STRINGS_COUNT] = {};
-//     if (parse_text_ptr(fp, ptr_data) == EOF)
-//     {
-//         return EOF;
-//     }
-//
-//     fclose(fp);
-//
-//     sort_text_ptr(ptr_data);
-//     FILE* output = fopen("output.txt", "w");
-//     print_text_ptr(ptr_data, output);
-//
-//     free_ptr_data(ptr_data);
-
-    printf("Programm ran successfully :)");
+    free_ptr_data(ptr_data);
     return 0;
 }
