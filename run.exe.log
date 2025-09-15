@@ -173,3 +173,79 @@ Run file:	D:\Coding\onegin\run.exe
 Directory:	D:\Coding\onegin
 
 --------------------------------------------------
+
+--------------------------------------------------
+TXLib предупреждает:
+
+Программа: D:\Coding\onegin\run.exe,
+
+ВНЕЗАПНО: Недопустимая операция.
+
+#1: Исключение EXCEPTION_ILLEGAL_INSTRUCTION (0xC000001D) при выполнении кода по адресу 0x00007FF7C424FE98 в функции get_input() в модуле D:\Coding\onegin\run.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+#1: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7C4490850 (64-bit), Flags: Cmdre0, Thread: 0x64BC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7C424FE98 in D:\Coding\onegin\run.exe: get_input()
+# 1 0x00007FF7C41CFF05 in D:\Coding\onegin\run.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	D:\txlib\TX\TXLib.h
+Compiled:	Sep 15 2025 21:12:48, GNU g++ 15.1.0, std=201703L, MinGW-W64 Runtime 12.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Sep 15 2025 21:13:11
+
+Run file:	D:\Coding\onegin\run.exe
+Directory:	D:\Coding\onegin
+
+--------------------------------------------------
+
+--------------------------------------------------
+TXLib соболезнует...
+
+Программа: D:\Coding\onegin\run.exe,
+
+ВНЕЗАПНО: signal (4, 0x00): SIGILL: Попытка выполнить недопустимую операцию. Проверьте указатели на функции. 
+
+Недопустимая операция.
+
+#1: Исключение EXCEPTION_ILLEGAL_INSTRUCTION (0xC000001D) при выполнении кода по адресу 0x00007FF7C424FE98 в функции get_input() в модуле D:\Coding\onegin\run.exe. Спасибо _txVectoredExceptionHandler(), что сообщил. Люблю его <3
+
+С помощью функции signal() вы можете сами обработать эту ошибку.
+
+#2: TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400], Instance: 0x00007FF7C4490850 (64-bit), Flags: Cmdre0, Thread: 0x64BC (Main). 
+
+--------------------------------------------------
+Стек вызовов:
+
+# 0 0x00007FF7C424FE98 in D:\Coding\onegin\run.exe: get_input()
+# 1 0x00007FF7C41CFF05 in D:\Coding\onegin\run.exe: main()
+
+TXLib печалится: Нет информации об исходных файлах. Вы не забыли опцию -g при компиляции?
+
+--------------------------------------------------
+Developed with:
+
+The Dumb Artist Library (TX Library)
+TXLib [Ver: 00173a, Rev: 174, Date: 2025-08-17 06:00:49 +0400]
+Copyright (C) Ded (Ilya Dedinsky, http://txlib.ru) <mail@txlib.ru>
+See license on: http://txlib.ru
+
+TXLib file:	D:\txlib\TX\TXLib.h
+Compiled:	Sep 15 2025 21:12:48, GNU g++ 15.1.0, std=201703L, MinGW-W64 Runtime 12.0.0 (alpha - rev. 0) 0000-00-00, 64-bit, Debug
+Started:	Sep 15 2025 21:13:11
+
+Run file:	D:\Coding\onegin\run.exe
+Directory:	D:\Coding\onegin
+
+--------------------------------------------------

@@ -2,6 +2,7 @@
 #include "strswp.h"
 #include "text.h"
 #include "text_ptr.h"
+#include "input.h"
 
 int main()
 {
@@ -14,36 +15,14 @@ int main()
     // return 1 при ошибках
     // тесты
 
-    FILE* fp = fopen("onegin_part.txt", "r");
-    FILE* output = fopen("output.txt", "w");
-
-    if (fp == NULL)
-    {
-        printf("Error with opening the file\n");
-        return EOF;
-    }
-
     FileInfo_t OneginInfo = {.data = {{}},
                              .strings_count = 0,
                              .max_len = 0};
 
-    if (count_file(fp, &OneginInfo) == EOF)
-    {
-        return EOF;
-    }
-
-    printf("STRINGS_COUNT = %d\n", OneginInfo.strings_count);
-    // strings_count = 17
-    printf("MAX_LINE_LEN = %zu\n\n", OneginInfo.max_len);
-    // MAX_LINE_LEN = 36
-
-    if (parse_text(fp, &OneginInfo) == EOF)
-    {
-        return EOF;
-    }
-    fclose(fp);
-
+    get_input(&OneginInfo);
     sort_text(&OneginInfo);
+
+    FILE* output = fopen("output.txt", "w");
     print_text(&OneginInfo, output);
 
     // char_strswp test
