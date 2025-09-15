@@ -6,10 +6,16 @@
 int main()
 {
     // TODO отдельная функция input("file.txt") = fopen + count + parse
-    // TODO output in file
-    // TODO массив с указателями; поменять константы на переменные (и мб каллок)
+    // input, output, sort,
+    // TODO для массива с указателями; поменять константы на переменные (и мб каллок)
+    // через каллок размер стрингс_коунт найти
+    // указатель на ф-ии
+    // naming, codestyle
+    // return 1 при ошибках
+    // тесты
 
     FILE* fp = fopen("onegin_part.txt", "r");
+    FILE* output = fopen("output.txt", "w");
 
     if (fp == NULL)
     {
@@ -31,18 +37,14 @@ int main()
     printf("MAX_LINE_LEN = %zu\n\n", OneginInfo.max_len);
     // MAX_LINE_LEN = 36
 
-    // if (parse_text(fp, &OneginInfo) == EOF)
-    // {
-    //     return EOF;
-    // }
-
-    char* ptr_data[STRINGS_COUNT] = {};
-    if (parse_text_ptr(fp, ptr_data) == EOF)
+    if (parse_text(fp, &OneginInfo) == EOF)
     {
         return EOF;
     }
-
     fclose(fp);
+
+    sort_text(&OneginInfo);
+    print_text(&OneginInfo, output);
 
     // char_strswp test
     /*
@@ -72,15 +74,19 @@ int main()
     printf("strcmp34: %d\n", strcmp_by_end(str3, str4));
     */
 
-//     print_text(&OneginInfo);
-//     sort_text(&OneginInfo);
-//     print_text(&OneginInfo);
+//     char* ptr_data[STRINGS_COUNT] = {};
+//     if (parse_text_ptr(fp, ptr_data) == EOF)
+//     {
+//         return EOF;
+//     }
+//
+//     fclose(fp);
+//
+//     sort_text_ptr(ptr_data);
+//     print_text_ptr(ptr_data, output);
+//
+//     free_ptr_data(ptr_data);
 
-    print_text_ptr(ptr_data);
-    sort_text_ptr(ptr_data);
-    print_text_ptr(ptr_data);
-
-    free_ptr_data(ptr_data);
-
+    printf("Programm ran successfully :)");
     return 0;
 }

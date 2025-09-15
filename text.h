@@ -10,6 +10,6 @@ int parse_text(FILE* stream, FileInfo_t* BookInfo);
 
 int sort_text(FileInfo_t* BookInfo);
 
-void print_text(FileInfo_t* BookInfo);
+void print_text(FileInfo_t* BookInfo, FILE* output);
 
 #endif // TEXT_H

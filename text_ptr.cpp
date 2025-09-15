@@ -19,6 +19,27 @@
 //     return 0;
 // }
 
+int parse_text_ptr(FILE* stream, char* ptr_data[])
+{
+    assert(stream != NULL);
+    assert(ptr_data != NULL);
+
+    char line[MAX_LINE_LEN] = "";
+
+    for (int i = 0; i < STRINGS_COUNT; i++)
+    {
+        if (fgets(line, MAX_LINE_LEN, stream) == NULL)
+        {
+            return EOF;
+        }
+        // ? - выделяется MAX_LINE_LEN памяти или strlen(line) памяти
+        // ответ - до \0  в моей реализации, в библиотечной?
+        // мы передаем только ptr => до стрлена
+        ptr_data[i] = strdup(line);
+    }
+    return 0;
+}
+
 int sort_text_ptr(char* ptr_data[])
 {
     assert(ptr_data != NULL);
@@ -44,6 +65,20 @@ int sort_text_ptr(char* ptr_data[])
     return 0;
 }
 
+int print_text_ptr(char* ptr_data[], FILE* output)
+{
+    assert(ptr_data != NULL);
+    assert(output != NULL);
+
+    for (int i = 0; i < STRINGS_COUNT; i++)
+    {
+        assert(ptr_data[i] != NULL);
+
+        fputs(ptr_data[i], output);
+    }
+    return 0;
+}
+
 void free_ptr_data(char* ptr_data[])
 {
     assert(ptr_data != NULL);
@@ -52,39 +87,4 @@ void free_ptr_data(char* ptr_data[])
     {
         free(ptr_data[i]);
     }
-}
-
-int parse_text_ptr(FILE* stream, char* ptr_data[])
-{
-    assert(stream != NULL);
-    assert(ptr_data != NULL);
-
-    char line[MAX_LINE_LEN] = "";
-
-    for (int i = 0; i < STRINGS_COUNT; i++)
-    {
-        if (fgets(line, MAX_LINE_LEN, stream) == NULL)
-        {
-            return EOF;
-        }
-        // ? - выделяется MAX_LINE_LEN памяти или strlen(line) памяти
-        // ответ - до \0  в моей реализации, в библиотечной?
-        // мы передаем только ptr => до стрлена
-        ptr_data[i] = strdup(line);
-    }
-    return 0;
-}
-
-int print_text_ptr(char* ptr_data[])
-{
-    assert(ptr_data != NULL);
-
-    for (int i = 0; i < STRINGS_COUNT; i++)
-    {
-        assert(ptr_data[i] != NULL);
-
-        printf("%s", ptr_data[i]);
-    }
-    printf("\n");
-    return 0;
 }

@@ -1,37 +1,5 @@
 #include "text.h"
 
-void print_text(FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-    assert(BookInfo->data != NULL);
-
-    for (int i = 0; i < STRINGS_COUNT; i++)
-    {
-        printf("%s", BookInfo->data[i]);
-    }
-    printf("\n");
-}
-
-int sort_text(FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-    assert(BookInfo->data != NULL);
-
-    int second = 0;
-
-    for (int first = 0; first < STRINGS_COUNT - 1; first++)
-    {
-        for (second = first + 1; second < STRINGS_COUNT; second++)
-        {
-            if (strcmp_by_end(BookInfo->data[first], BookInfo->data[second]) > 0)
-            {
-                llu_strswp(BookInfo->data[first], BookInfo->data[second]);
-            }
-        }
-    }
-    return 0;
-}
-
 int count_file(FILE* stream, FileInfo_t* BookInfo)
 {
     assert(BookInfo != NULL);
@@ -87,4 +55,35 @@ int parse_text(FILE* stream, FileInfo_t* BookInfo)
         // printf("%s", BookInfo->data[i]);
     }
     return 0;
+}
+
+int sort_text(FileInfo_t* BookInfo)
+{
+    assert(BookInfo != NULL);
+    assert(BookInfo->data != NULL);
+
+    int second = 0;
+
+    for (int first = 0; first < STRINGS_COUNT - 1; first++)
+    {
+        for (second = first + 1; second < STRINGS_COUNT; second++)
+        {
+            if (strcmp_by_end(BookInfo->data[first], BookInfo->data[second]) > 0)
+            {
+                llu_strswp(BookInfo->data[first], BookInfo->data[second]);
+            }
+        }
+    }
+    return 0;
+}
+
+void print_text(FileInfo_t* BookInfo, FILE* output)
+{
+    assert(BookInfo != NULL);
+    assert(BookInfo->data != NULL);
+
+    for (int i = 0; i < STRINGS_COUNT; i++)
+    {
+        fputs(BookInfo->data[i], output);
+    }
 }

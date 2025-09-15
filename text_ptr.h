@@ -6,9 +6,9 @@
 
 int parse_text_ptr(FILE* stream, char* ptr_data[]);
 
-int print_text_ptr(char* ptr_data[]);
-
 int sort_text_ptr(char* ptr_data[]);
+
+int print_text_ptr(char* ptr_data[], FILE* output);
 
 void free_ptr_data(char* ptr_data[]);
 
