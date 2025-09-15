@@ -1,5 +1,14 @@
 #include "strswp.h"
 
+char my_tolower(char ch)
+{
+    if (ch <= 'ß' && ch >= 'À')
+    {
+        return ch - 'À' + 'à';
+    }
+    return ch;
+}
+
 int not_symbol(char ch)
 {
     return strchr(",.?! \t:;(){}[]\'\"-", ch) != NULL;
@@ -22,12 +31,50 @@ int strcmp_by_start(char* str1, char* str2)
         {
             i2++;
         }
-        if (tolower(str1[i1]) != tolower(str2[i2]))
+        if (my_tolower(str1[i1]) != my_tolower(str2[i2]))
         {
             break;
         }
     }
-    return tolower(str1[i1]) - tolower(str2[i2]);
+    return my_tolower(str1[i1]) - my_tolower(str2[i2]);
+}
+
+int strcmp_by_end(char* str1, char* str2)
+{
+    assert(str1 != str2);
+    assert(str1 != NULL);
+    assert(str2 != NULL);
+
+    int len1 = (int) strlen(str1); // convert to int for easier code
+    int len2 = (int) strlen(str2);
+
+    int i1 = len1 - 1;
+    int i2 = len2 - 1;
+
+    for (; i1 > 0 && i2 > 0; i1--, i2--)
+    {
+        while (not_symbol(str1[i1]))
+        {
+            i1--;
+        }
+        while (not_symbol(str2[i2]))
+        {
+            i2--;
+        }
+
+        assert(i1 >= 0);
+        assert(i2 >= 0);
+
+        if (my_tolower(str1[i1]) != my_tolower(str2[i2]))
+        {
+            return my_tolower(str1[i1]) - my_tolower(str2[i2]);
+        }
+    }
+
+    assert(i1 >= 0);
+    assert(i2 >= 0);
+
+    return len1 - len2;
 }
 
 int string_strswp(char* str1, char* str2)

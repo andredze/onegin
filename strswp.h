@@ -3,9 +3,13 @@
 
 #include "common.h"
 
+char my_tolower(char ch);
+
 int not_symbol(char ch);
 
 int strcmp_by_start(char* str1, char* str2);
+
+int strcmp_by_end(char* str1, char* str2);
 
 int string_strswp(char* str1, char* str2);
 

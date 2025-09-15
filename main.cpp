@@ -5,7 +5,7 @@ int count_file(FILE* stream, FileInfo_t* BookInfo);
 
 int parse_text(FILE* stream, FileInfo_t* BookInfo);
 
-int sort_text_by_start(FileInfo_t* BookInfo);
+int sort_text(FileInfo_t* BookInfo);
 
 void print_text(FileInfo_t* BookInfo);
 
@@ -42,15 +42,27 @@ int main()
     fclose(fp);
 
     // char_strswp test
+    /*
     char str1[] = {'b', 'a', 'n', 'a', 'n', 'a', '\0'};
     char str2[] = {'a', 'p', 'p', 'l', 'e', '\0', '\0'};
     char_strswp(str1, str2);
-    printf("%s\n", str1);
-    printf("%s\n", str2);
+    printf("1: %s\n", str1);
+    printf("2: %s\n\n", str2);
+    */
+
+    // strcmp_by_end test
+    /*
+    int test = ('я' > 'а');
+    printf("\'я\' > \'а\': %d\n", test);
+
+    char str3[40] = "Вниманье дружбы возлюбя,\r\n";
+    char str4[40] = "ааВысоких дум и простотыаааа;\r\n";
+    printf("34: %d\n", strcmp_by_end(str3, str4));
+    */
 
     print_text(&OneginInfo);
 
-    sort_text_by_start(&OneginInfo);
+    sort_text(&OneginInfo);
 
     print_text(&OneginInfo);
 
@@ -69,7 +81,7 @@ void print_text(FileInfo_t* BookInfo)
     printf("\n");
 }
 
-int sort_text_by_start(FileInfo_t* BookInfo)
+int sort_text(FileInfo_t* BookInfo)
 {
     assert(BookInfo != NULL);
     assert(BookInfo->data != NULL);
@@ -80,7 +92,7 @@ int sort_text_by_start(FileInfo_t* BookInfo)
     {
         for (second = first + 1; second < STRINGS_COUNT; second++)
         {
-            if (strcmp_by_start(BookInfo->data[first], BookInfo->data[second]) > 0)
+            if (strcmp_by_end(BookInfo->data[first], BookInfo->data[second]) > 0)
             {
                 char_strswp(BookInfo->data[first], BookInfo->data[second]);
             }
