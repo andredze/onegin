@@ -12,7 +12,8 @@ CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 
 SOURCES = main.cpp \
 		  strswp.cpp \
-		  text.cpp
+		  text.cpp \
+		  text_ptr.cpp
 
 EXECUTABLE = run.exe
 

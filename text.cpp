@@ -19,7 +19,7 @@ int sort_text(FileInfo_t* BookInfo)
 
     int second = 0;
 
-    for (int first = 0; first < STRINGS_COUNT; first++)
+    for (int first = 0; first < STRINGS_COUNT - 1; first++)
     {
         for (second = first + 1; second < STRINGS_COUNT; second++)
         {

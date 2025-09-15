@@ -1,12 +1,13 @@
 #include "common.h"
 #include "strswp.h"
 #include "text.h"
+#include "text_ptr.h"
 
 int main()
 {
     // TODO отдельная функция input("file.txt") = fopen + count + parse
     // TODO output in file
-    // TODO массив с указателями
+    // TODO массив с указателями; поменять константы на переменные (и мб каллок)
 
     FILE* fp = fopen("onegin_part.txt", "r");
 
@@ -30,10 +31,17 @@ int main()
     printf("MAX_LINE_LEN = %zu\n\n", OneginInfo.max_len);
     // MAX_LINE_LEN = 36
 
-    if (parse_text(fp, &OneginInfo) == EOF)
+    // if (parse_text(fp, &OneginInfo) == EOF)
+    // {
+    //     return EOF;
+    // }
+
+    char* ptr_data[STRINGS_COUNT] = {};
+    if (parse_text_ptr(fp, ptr_data) == EOF)
     {
         return EOF;
     }
+
     fclose(fp);
 
     // char_strswp test
@@ -64,11 +72,15 @@ int main()
     printf("strcmp34: %d\n", strcmp_by_end(str3, str4));
     */
 
-    print_text(&OneginInfo);
+//     print_text(&OneginInfo);
+//     sort_text(&OneginInfo);
+//     print_text(&OneginInfo);
 
-    sort_text(&OneginInfo);
+    print_text_ptr(ptr_data);
+    sort_text_ptr(ptr_data);
+    print_text_ptr(ptr_data);
 
-    print_text(&OneginInfo);
+    free_ptr_data(ptr_data);
 
     return 0;
 }
