@@ -10,7 +10,7 @@
 
 const int MAXLEN = 500;
 
-const int STRINGS_COUNT = 17;
+const int STRINGS_COUNT = 5134;
 
 const size_t MAX_LINE_LEN = 47;
 

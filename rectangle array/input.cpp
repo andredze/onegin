@@ -2,7 +2,7 @@
 
 int get_input(FileInfo_t* BookInfo)
 {
-    FILE* fp = fopen("onegin_part.txt", "r");
+    FILE* fp = fopen("onegin.txt", "r");
 
     if (fp == NULL)
     {
