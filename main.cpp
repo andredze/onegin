@@ -1,18 +1,13 @@
 #include "common.h"
 #include "strswp.h"
-
-int count_file(FILE* stream, FileInfo_t* BookInfo);
-
-int parse_text(FILE* stream, FileInfo_t* BookInfo);
-
-int sort_text(FileInfo_t* BookInfo);
-
-void print_text(FileInfo_t* BookInfo);
+#include "text.h"
 
 int main()
 {
     // TODO отдельная функция input("file.txt") = fopen + count + parse
     // TODO output in file
+    // TODO массив с указателями
+
     FILE* fp = fopen("onegin_part.txt", "r");
 
     if (fp == NULL)
@@ -46,8 +41,17 @@ int main()
     char str1[] = {'b', 'a', 'n', 'a', 'n', 'a', '\0'};
     char str2[] = {'a', 'p', 'p', 'l', 'e', '\0', '\0'};
     char_strswp(str1, str2);
-    printf("1: %s\n", str1);
-    printf("2: %s\n\n", str2);
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n\n", str2);
+    */
+
+    // llu_strswp test
+    /*
+    char str2[] = {'b', 'a', 'n', 'a', 'n', 'a', 'n', 'a', 'n', 'a', '\0'};
+    char str1[] = {'z', 'p', 'p', 'l', 'e', 'z', 'p', 'l', 'e', '\0', '\0'};
+    llu_strswp(str1, str2);
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n\n", str2);
     */
 
     // strcmp_by_end test
@@ -57,7 +61,7 @@ int main()
 
     char str3[40] = "Вниманье дружбы возлюбя,\r\n";
     char str4[40] = "ааВысоких дум и простотыаааа;\r\n";
-    printf("34: %d\n", strcmp_by_end(str3, str4));
+    printf("strcmp34: %d\n", strcmp_by_end(str3, str4));
     */
 
     print_text(&OneginInfo);
@@ -66,94 +70,5 @@ int main()
 
     print_text(&OneginInfo);
 
-    return 0;
-}
-
-void print_text(FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-    assert(BookInfo->data != NULL);
-
-    for (int i = 0; i < STRINGS_COUNT; i++)
-    {
-        printf("%s", BookInfo->data[i]);
-    }
-    printf("\n");
-}
-
-int sort_text(FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-    assert(BookInfo->data != NULL);
-
-    int second = 0;
-
-    for (int first = 0; first < STRINGS_COUNT; first++)
-    {
-        for (second = first + 1; second < STRINGS_COUNT; second++)
-        {
-            if (strcmp_by_end(BookInfo->data[first], BookInfo->data[second]) > 0)
-            {
-                char_strswp(BookInfo->data[first], BookInfo->data[second]);
-            }
-        }
-    }
-    return 0;
-}
-
-int count_file(FILE* stream, FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-
-    char line[MAXLEN] = "";
-
-    int count = 0;
-    size_t max_len = 0;
-    size_t len = 0;
-
-    for (;; count++)
-    {
-        if (fgets(line, MAXLEN, stream) == NULL)
-        {
-            if (feof(stream))
-            {
-                BookInfo->strings_count = count;
-                BookInfo->max_len = max_len + 1; // +1 for '\0' symbol
-
-                rewind(stream);
-                return 0;
-            }
-
-            printf("Error with reading file\n");
-            return EOF;
-        }
-        len = strlen(line) / sizeof(char);
-        if (len > max_len)
-        {
-            max_len = len;
-        }
-    }
-    return EOF;
-}
-
-int parse_text(FILE* stream, FileInfo_t* BookInfo)
-{
-    assert(BookInfo != NULL);
-    assert(BookInfo->data != NULL);
-
-    for (int i = 0; i < STRINGS_COUNT; i++)
-    {
-        if (fgets(BookInfo->data[i], MAX_LINE_LEN, stream) == NULL)
-        {
-            // printf("%s", BookInfo->data[i]);
-            if (feof(stream))
-            {
-                return 0;
-            }
-            printf("Reading from file error\n");
-            return EOF;
-        }
-        // printf("%s", BookInfo->data[i]);
-    }
     return 0;
 }

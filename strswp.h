@@ -13,6 +13,8 @@ int strcmp_by_end(char* str1, char* str2);
 
 int string_strswp(char* str1, char* str2);
 
+int llu_strswp(char* str1, char* str2);
+
 int char_strswp(char* str1, char* str2);
 
 #endif // STRSWP_H

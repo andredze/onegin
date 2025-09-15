@@ -11,7 +11,8 @@ CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 			-D_EJUDGE_CLIENT_SIDE
 
 SOURCES = main.cpp \
-		  strswp.cpp
+		  strswp.cpp \
+		  text.cpp
 
 EXECUTABLE = run.exe
 
