@@ -1,8 +1,9 @@
 #include "common.h"
 #include "strswp.h"
-#include "text.h"
+#include "rectangle array/input.h"
+#include "rectangle array/sort.h"
+#include "rectangle array/output.h"
 #include "text_ptr.h"
-#include "input.h"
 
 int main()
 {
@@ -21,9 +22,7 @@ int main()
 
     get_input(&OneginInfo);
     sort_text(&OneginInfo);
-
-    FILE* output = fopen("output.txt", "w");
-    print_text(&OneginInfo, output);
+    print_text(&OneginInfo);
 
     // char_strswp test
     /*
