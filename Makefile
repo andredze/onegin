@@ -11,22 +11,22 @@ CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 			-D_EJUDGE_CLIENT_SIDE
 
 SOURCES = main.cpp \
-		  strswp.cpp \
-		  "./rectangle array/sort.cpp" \
-		  "./rectangle array/input.cpp" \
-		  "./rectangle array/output.cpp" \
-		  text_ptr.cpp
+		  strcmp.cpp \
+		  input.cpp \
+		  ptrdata.cpp \
+		  sort.cpp \
+		  output.cpp
 
 EXECUTABLE = run.exe
 
 all:
-	$(CXX) $(FLAGS) $(SOURCES) -o $(EXECUTABLE)
+	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
 
 release:
-	$(CXX) $(FLAGS) $(SOURCES) -o $(EXECUTABLE)
+	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
 
 debug:
-	$(CXX) -DDEBUG_MODE $(FLAGS) $(SOURCES) -o $(EXECUTABLE)
+	$(CXX) -DDEBUG_MODE $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
 
 clean:
 	rm $(EXECUTABLE)
