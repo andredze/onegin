@@ -5,7 +5,7 @@ char* parse_text(int argc, char* argv[])
     assert(argc >= 1);
     assert(argv != NULL);
 
-    // fprintf(stderr, "<Reading file>\n");
+    // printdebug("<Reading file>\n");
 
     FILE* stream = NULL;
     char* filepath = NULL;
@@ -32,7 +32,7 @@ char* parse_text(int argc, char* argv[])
         return NULL;
     }
 
-    // fprintf(stderr, "<Reading went successfully>\n\n");
+    // printdebug("<Reading went successfully>\n\n");
 
     fclose(stream);
 
@@ -58,7 +58,7 @@ int open_file(int argc, char* argv[], char** filepath, FILE** stream)
     *stream = fopen(*filepath, "rb");
     if (*stream == NULL)
     {
-        fprintf(stderr, "\n<Can not open the file>\n");
+        printdebug("\n<Can not open the file>\n");
         return 1;
     }
     return 0;
@@ -70,12 +70,12 @@ int count_size(char* filepath, size_t* size)
 
     if (stat(filepath, &fileinfo) == -1)
     {
-        fprintf(stderr, "\n<Error occured with stat()>\n");
+        printdebug("\n<Error occured with stat()>\n");
         return 1;
     }
 
     *size = fileinfo.st_size + 1;
-    // fprintf(stderr, "size = %zu\n", *size);
+    // printdebug("size = %zu\n", *size);
     return 0;
 }
 
@@ -84,7 +84,7 @@ int allocate_buffer(char** buffer, size_t size)
     *buffer = (char*) calloc(size / sizeof(char), sizeof(char));
     if (*buffer == NULL)
     {
-        fprintf(stderr, "<Memory allocation for buffer failed>");
+        printdebug("<Memory allocation for buffer failed>");
         return 1;
     }
     return 0;
@@ -97,13 +97,13 @@ int fill_buffer(char* buffer, size_t size, FILE* stream)
     {
         if (ferror(stream))
         {
-            fprintf(stderr, "\n<Error with reading the file>\n");
-            fprintf(stderr, "<fread_return = %zu>\n", fread_return);
+            printdebug("\n<Error with reading the file>\n");
+            printdebug("<fread_return = %zu>\n", fread_return);
             return 1;
         }
         if (feof(stream))
         {
-            fprintf(stderr, "\n<EOF reached>\n");
+            printdebug("\n<EOF reached>\n");
             return 1;
         }
     }

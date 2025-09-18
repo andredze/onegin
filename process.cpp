@@ -20,19 +20,19 @@ int process_text(LinePointers_t* ptrdata, int lines_count, const char* method)
     }
     else
     {
-        fprintf(stderr, "<Unnexpected method of sorting>\n");
+        printdebug("<Unnexpected method of sorting>\n");
         return 1;
     }
 
     if (qsort_text(ptrdata, lines_count, compare))
     {
-        fprintf(stderr, "<Error during sorting>\n");
+        printdebug("<Error during sorting>\n");
         return 1;
     }
 
     if (print_text(ptrdata, lines_count, output_path))
     {
-        fprintf(stderr, "<Error during printing>\n");
+        printdebug("<Error during printing>\n");
         return 1;
     }
 

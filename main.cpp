@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
     char* buffer = parse_text(argc, argv);
     if (buffer == NULL)
     {
-        fprintf(stderr, "<Error during parsing text>\n");
+        printdebug("<Error during parsing text>\n");
         return 1;
     }
     // puts(buffer);
@@ -19,7 +19,7 @@ int main(int argc, char* argv[])
     LinePointers_t* ptrdata = make_ptrdata(buffer, &lines_count);
     if (ptrdata == NULL)
     {
-        fprintf(stderr, "<ptr_data is a NULL pointer>\n");
+        printdebug("<ptr_data is a NULL pointer>\n");
         return 1;
     }
 
@@ -33,7 +33,8 @@ int main(int argc, char* argv[])
     }
 
     free(ptrdata);
-    // fprintf(stderr, "<Memory freed>\n");
+
+    printdebug("<Programm ran>");
 
     return 0;
 }

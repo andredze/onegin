@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
-// const char* output_filepath = "output.txt";
+#define printdebug(a) fprintf(stderr, a)
 
 typedef struct LinePointers {
     char* start;
