@@ -3,6 +3,7 @@
 LinePointers_t* make_ptrdata(char* buffer, int* main_lines_count)
 {
     assert(buffer != NULL);
+    assert(main_lines_count != NULL);
 
     int lines_count = 0;
     if (count_lines(buffer, &lines_count))
@@ -27,6 +28,9 @@ LinePointers_t* make_ptrdata(char* buffer, int* main_lines_count)
 
 int count_lines(char* buffer, int* ptr_lines_count)
 {
+    assert(buffer != NULL);
+    assert(ptr_lines_count != NULL);
+
     // fprintf(stderr, "<Counting lines>\n");
 
     char* ptr = buffer;
@@ -57,6 +61,8 @@ int count_lines(char* buffer, int* ptr_lines_count)
 
 int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
 {
+    assert(ptrdata != NULL);
+
     // fprintf(stderr, "<Allocating memory>\n");
 
     *ptrdata = (LinePointers_t*) calloc(lines_count, sizeof(LinePointers_t));
@@ -72,6 +78,9 @@ int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
 
 int fill_ptrdata(char* buffer, LinePointers_t* ptrdata, int lines_count)
 {
+    assert(buffer != NULL);
+    assert(ptrdata != NULL);
+
     // fprintf(stderr, "<Filling ptrdata>\n");
 
     // fill ptrdata and switch \n to \0
