@@ -22,6 +22,7 @@ int strcmp_by_start(const void* line_ptrs_1, const void* line_ptrs_2)
         {
             i2++;
         }
+
         if (tolower(str1[i1]) != tolower(str2[i2]))
         {
             break;
@@ -56,9 +57,6 @@ int strcmp_by_end(const void* line_ptrs_1, const void* line_ptrs_2)
         {
             str2--;
         }
-
-        assert(start1 <= str1);
-        assert(start2 <= str2);
 
         let1 = tolower(*str1);
         let2 = tolower(*str2);

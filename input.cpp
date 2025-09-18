@@ -2,7 +2,7 @@
 
 char* parse_text()
 {
-    fprintf(stderr, "<Reading file>\n");
+    // fprintf(stderr, "<Reading file>\n");
 
     FILE* stream = NULL;
     const char* filepath = INPUT_FILEPATH;
@@ -29,7 +29,7 @@ char* parse_text()
         return NULL;
     }
 
-    fprintf(stderr, "<Reading went successfully>\n\n");
+    // fprintf(stderr, "<Reading went successfully>\n\n");
 
     fclose(stream);
 
@@ -58,7 +58,7 @@ int count_size(const char* filepath, size_t* size)
     }
 
     *size = fileinfo.st_size + 1;
-    fprintf(stderr, "size = %zu\n", *size);
+    // fprintf(stderr, "size = %zu\n", *size);
     return 0;
 }
 

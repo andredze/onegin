@@ -27,7 +27,7 @@ LinePointers_t* make_ptrdata(char* buffer, int* main_lines_count)
 
 int count_lines(char* buffer, int* ptr_lines_count)
 {
-    fprintf(stderr, "<Counting lines>\n");
+    // fprintf(stderr, "<Counting lines>\n");
 
     char* ptr = buffer;
     int lines_count = 0;
@@ -51,13 +51,13 @@ int count_lines(char* buffer, int* ptr_lines_count)
 
     *ptr_lines_count = lines_count;
 
-    fprintf(stderr, "<Counted \\n>\n");
+    // fprintf(stderr, "<Counted \\n>\n");
     return 0;
 }
 
 int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
 {
-    fprintf(stderr, "<Allocating memory>\n");
+    // fprintf(stderr, "<Allocating memory>\n");
 
     *ptrdata = (LinePointers_t*) calloc(lines_count, sizeof(LinePointers_t));
     if (ptrdata == NULL)
@@ -66,13 +66,13 @@ int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
         return 1;
     }
 
-    fprintf(stderr, "<Allocating memory for ptrdata went successfully>\n");
+    // fprintf(stderr, "<Allocating memory for ptrdata went successfully>\n");
     return 0;
 }
 
 int fill_ptrdata(char* buffer, LinePointers_t* ptrdata, int lines_count)
 {
-    fprintf(stderr, "<Filling ptrdata>\n");
+    // fprintf(stderr, "<Filling ptrdata>\n");
 
     // fill ptrdata and switch \n to \0
     char* ptr = buffer;
@@ -95,6 +95,6 @@ int fill_ptrdata(char* buffer, LinePointers_t* ptrdata, int lines_count)
         ptrdata[line_num].end = ptr - 2;
     }
 
-    fprintf(stderr, "<Filling ptrdata went successfully>\n\n");
+    // fprintf(stderr, "<Filling ptrdata went successfully>\n\n");
     return 0;
 }

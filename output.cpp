@@ -5,7 +5,7 @@ int print_text(LinePointers_t* ptrdata, int lines_count, const char* output_path
     assert(ptrdata != NULL);
     assert(output_path != NULL);
 
-    fprintf(stderr, "<Printing text>\n");
+    // fprintf(stderr, "<Printing text>\n");
 
     FILE* output_stream = NULL;
 
@@ -20,7 +20,7 @@ int print_text(LinePointers_t* ptrdata, int lines_count, const char* output_path
 
     fclose(output_stream);
 
-    fprintf(stderr, "<Printing text to file went successfully>\n");
+    // fprintf(stderr, "<Printing text to file went successfully>\n");
 
     return 0;
 }

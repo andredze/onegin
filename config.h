@@ -1,7 +1,7 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-const char INPUT_FILEPATH[] = "onegin_part.txt";
+const char INPUT_FILEPATH[] = "onegin_eng.txt";
 
 const char SORTED_BYSTART_FILEPATH[] = "sorted_by_start.txt";
 

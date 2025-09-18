@@ -14,7 +14,7 @@ int main()
         fprintf(stderr, "<Error during parsing text>\n");
         return 1;
     }
-    puts(buffer);
+    // puts(buffer);
 
     LinePointers_t* ptrdata = make_ptrdata(buffer, &lines_count);
     if (ptrdata == NULL)
