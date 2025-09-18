@@ -20,9 +20,7 @@ SOURCES = main.cpp \
 
 EXECUTABLE = run.exe
 
-OUTPUTS = sorted_by_start.txt \
-		  sorted_by_end.txt \
-		  original.txt
+OUTPUTS = output.txt
 
 all:
 	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
