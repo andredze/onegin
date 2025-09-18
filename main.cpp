@@ -16,6 +16,7 @@ int main(int argc, char* argv[])
     }
     // puts(buffer);
 
+    // LinePointers_t* ptrdata = NULL;
     LinePointers_t* ptrdata = make_ptrdata(buffer, &lines_count);
     if (ptrdata == NULL)
     {
