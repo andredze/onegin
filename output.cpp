@@ -46,6 +46,7 @@ int write_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
             fprintf(stderr, "\n<Error with printing the file>\n");
             return 1;
         }
+        fputc('\n', output_stream);
     }
     return 0;
 }
