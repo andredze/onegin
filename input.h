@@ -5,4 +5,12 @@
 
 char* parse_text(char* filepath);
 
+int open_file(char* filename, FILE** stream);
+
+int count_size(char* filepath, size_t* size);
+
+int allocate_buffer(char** buffer, size_t size);
+
+int fill_buffer(char* buffer, size_t size, FILE* stream);
+
 #endif // INPUT_H

@@ -12,7 +12,7 @@ LinePointers_t* make_ptrdata(char* buffer, int* main_lines_count)
     *main_lines_count = lines_count;
 
     LinePointers_t* ptrdata = NULL;
-    if (allocate_ptrdata_memory(&ptrdata, lines_count))
+    if (allocate_ptrdata(&ptrdata, lines_count))
     {
         return NULL;
     }
@@ -55,7 +55,7 @@ int count_lines(char* buffer, int* ptr_lines_count)
     return 0;
 }
 
-int allocate_ptrdata_memory(LinePointers_t** ptrdata, int lines_count)
+int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
 {
     printf("<Allocating memory>\n");
 

@@ -6,48 +6,90 @@ char* parse_text(char* filepath)
 
     printf("<Reading file>\n");
 
-    FILE* stream = fopen(filepath, "rb");
-    if (stream == NULL)
+    FILE* stream = NULL;
+    if (open_file(filepath, &stream))
     {
-        printf("\n<Error with opening the file>\n");
-        return NULL;
-    }
-    struct stat fileinfo;
-
-    if (stat(filepath, &fileinfo) == -1)
-    {
-        printf("\n<Error occured with stat()>\n");
         return NULL;
     }
 
-    size_t size = fileinfo.st_size + 1;
-    printf("size = %zu\n", size);
-    char* buffer = (char*) calloc(size / sizeof(char), sizeof(char));
-    if (buffer == NULL)
+    size_t size = 0;
+    if (count_size(filepath, &size))
     {
-        printf("<Memory allocation for buffer failed>");
         return NULL;
     }
-    size_t fread_return = fread(buffer, size, 1, stream);
-    if (fread_return != 1)
+
+    char* buffer = NULL;
+    if (allocate_buffer(&buffer, size))
     {
-        if (ferror(stream))
-        {
-            printf("\n<Error with reading the file>\n");
-            printf("<fread_return = %zu>\n", fread_return);
-            return NULL;
-        }
-        // if (feof(stream))
-        // {
-        //     printf("\n<EOF reached>\n")
-        //     return NULL;
-        // }
+        return NULL;
     }
-    buffer[size - 1] = '\0'; // adding NULL-terminator
+
+    if (fill_buffer(buffer, size, stream))
+    {
+        return NULL;
+    }
 
     printf("<Reading went successfully>\n\n");
 
     fclose(stream);
 
     return buffer;
+}
+
+int open_file(char* filepath, FILE** stream)
+{
+    *stream = fopen(filepath, "rb");
+    if (*stream == NULL)
+    {
+        printf("\n<Error with opening the file>\n");
+        return 1;
+    }
+    return 0;
+}
+
+int count_size(char* filepath, size_t* size)
+{
+    struct stat fileinfo;
+
+    if (stat(filepath, &fileinfo) == -1)
+    {
+        printf("\n<Error occured with stat()>\n");
+        return 1;
+    }
+
+    *size = fileinfo.st_size + 1;
+    printf("size = %zu\n", *size);
+    return 0;
+}
+
+int allocate_buffer(char** buffer, size_t size)
+{
+    *buffer = (char*) calloc(size / sizeof(char), sizeof(char));
+    if (*buffer == NULL)
+    {
+        printf("<Memory allocation for buffer failed>");
+        return 1;
+    }
+    return 0;
+}
+
+int fill_buffer(char* buffer, size_t size, FILE* stream)
+{
+    size_t fread_return = fread(buffer, size - 1, 1, stream);
+    if (fread_return != 1)
+    {
+        if (ferror(stream))
+        {
+            printf("\n<Error with reading the file>\n");
+            printf("<fread_return = %zu>\n", fread_return);
+            return 1;
+        }
+        if (feof(stream))
+        {
+            printf("\n<EOF reached>\n");
+            return 1;
+        }
+    }
+    buffer[size - 1] = '\0'; // adding NULL-terminator
+    return 0;
 }

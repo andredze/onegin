@@ -13,7 +13,7 @@ int bubble_sort_text(LinePointers_t* ptrdata, int lines_count)
     {
         for (second = first + 1; second < lines_count; second++)
         {
-            if (strcmp_by_start(&(ptrdata[first]), &(ptrdata[second])) > 0)
+            if (strcmp_by_end(&(ptrdata[first]), &(ptrdata[second])) > 0)
             {
                 swap_line_pointers(&(ptrdata[first]), &(ptrdata[second]));
             }
