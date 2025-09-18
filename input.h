@@ -2,12 +2,13 @@
 #define INPUT_H
 
 #include "common.h"
+#include "config.h"
 
-char* parse_text(char* filepath);
+char* parse_text();
 
-int open_file(char* filename, FILE** stream);
+int open_file(const char* filename, FILE** stream);
 
-int count_size(char* filepath, size_t* size);
+int count_size(const char* filepath, size_t* size);
 
 int allocate_buffer(char** buffer, size_t size);
 

@@ -9,17 +9,7 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
-const int MAXLEN = 500;
-
-const int STRINGS_COUNT = 5134;
-
-const size_t MAX_LINE_LEN = 47;
-
-typedef struct FileInfo {
-    char data[STRINGS_COUNT][MAX_LINE_LEN];
-    int strings_count = STRINGS_COUNT;
-    size_t max_len = MAX_LINE_LEN;
-} FileInfo_t;
+// const char* output_filepath = "output.txt";
 
 typedef struct LinePointers {
     char* start;

@@ -15,9 +15,13 @@ SOURCES = main.cpp \
 		  input.cpp \
 		  ptrdata.cpp \
 		  sort.cpp \
-		  output.cpp
+		  output.cpp \
+		  process.cpp
 
 EXECUTABLE = run.exe
+
+OUTPUTS = sorted_by_start.txt \
+		  sorted_by_end.txt
 
 all:
 	$(CXX) $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
@@ -29,4 +33,4 @@ debug:
 	$(CXX) -DDEBUG_MODE $(CXXFLAGS) $(SOURCES) -o $(EXECUTABLE)
 
 clean:
-	rm $(EXECUTABLE)
+	rm $(EXECUTABLE) $(OUTPUTS)

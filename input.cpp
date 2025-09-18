@@ -1,12 +1,12 @@
 #include "input.h"
 
-char* parse_text(char* filepath)
+char* parse_text()
 {
-    assert(filepath != NULL);
-
     fprintf(stderr, "<Reading file>\n");
 
     FILE* stream = NULL;
+    const char* filepath = INPUT_FILEPATH;
+
     if (open_file(filepath, &stream))
     {
         return NULL;
@@ -36,7 +36,7 @@ char* parse_text(char* filepath)
     return buffer;
 }
 
-int open_file(char* filepath, FILE** stream)
+int open_file(const char* filepath, FILE** stream)
 {
     *stream = fopen(filepath, "rb");
     if (*stream == NULL)
@@ -47,7 +47,7 @@ int open_file(char* filepath, FILE** stream)
     return 0;
 }
 
-int count_size(char* filepath, size_t* size)
+int count_size(const char* filepath, size_t* size)
 {
     struct stat fileinfo;
 
