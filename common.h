@@ -1,7 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-// #include <TXLib.h>
+#include <TXLib.h>
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>

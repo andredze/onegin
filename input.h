@@ -4,11 +4,11 @@
 #include "common.h"
 #include "config.h"
 
-char* parse_text();
+char* parse_text(int argc, char* argv[]);
 
-int open_file(const char* filename, FILE** stream);
+int open_file(int argc, char* argv[], char** filepath, FILE** stream);
 
-int count_size(const char* filepath, size_t* size);
+int count_size(char* filepath, size_t* size);
 
 int allocate_buffer(char** buffer, size_t size);
 

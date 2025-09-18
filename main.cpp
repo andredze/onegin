@@ -4,11 +4,11 @@
 #include "ptrdata.h"
 #include "process.h"
 
-int main()
+int main(int argc, char* argv[])
 {
     int lines_count = 0;
 
-    char* buffer = parse_text();
+    char* buffer = parse_text(argc, argv);
     if (buffer == NULL)
     {
         fprintf(stderr, "<Error during parsing text>\n");

@@ -1,13 +1,16 @@
 #include "input.h"
 
-char* parse_text()
+char* parse_text(int argc, char* argv[])
 {
+    assert(argc >= 1);
+    assert(argv != NULL);
+
     // fprintf(stderr, "<Reading file>\n");
 
     FILE* stream = NULL;
-    const char* filepath = INPUT_FILEPATH;
+    char* filepath = NULL;
 
-    if (open_file(filepath, &stream))
+    if (open_file(argc, argv, &filepath, &stream))
     {
         return NULL;
     }
@@ -36,18 +39,32 @@ char* parse_text()
     return buffer;
 }
 
-int open_file(const char* filepath, FILE** stream)
+int open_file(int argc, char* argv[], char** filepath, FILE** stream)
 {
-    *stream = fopen(filepath, "rb");
+    assert(stream != NULL);
+    assert(argv != NULL);
+    assert(argc >= 1);
+    assert(filepath != NULL);
+
+    if (argc > 1)
+    {
+        *filepath = argv[1];
+    }
+    else
+    {
+        *filepath = "onegin.txt";
+    }
+
+    *stream = fopen(*filepath, "rb");
     if (*stream == NULL)
     {
-        fprintf(stderr, "\n<Error with opening the file>\n");
+        fprintf(stderr, "\n<Can not open the file>\n");
         return 1;
     }
     return 0;
 }
 
-int count_size(const char* filepath, size_t* size)
+int count_size(char* filepath, size_t* size)
 {
     struct stat fileinfo;
 
