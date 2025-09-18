@@ -6,11 +6,11 @@ int qsort_text(LinePointers_t* ptrdata, int lines_count,
     assert(ptrdata != NULL);
     assert(compare != NULL);
 
-    // printdebug("<Sorting data>\n");
+    // fprintf(stderr, "<Sorting data>\n");
 
     qsort(ptrdata, lines_count, sizeof(LinePointers_t), compare);
 
-    // printdebug("<Sorting data went successfully>\n\n");
+    // fprintf(stderr, "<Sorting data went successfully>\n\n");
 
     return 0;
 }
@@ -21,7 +21,7 @@ int bubble_sort_text(LinePointers_t* ptrdata, int lines_count,
     assert(ptrdata != NULL);
     assert(compare != NULL);
 
-    // printdebug("<Sorting data>\n");
+    // fprintf(stderr, "<Sorting data>\n");
 
     int first = 0;
     int second = 0;
@@ -37,7 +37,7 @@ int bubble_sort_text(LinePointers_t* ptrdata, int lines_count,
         }
     }
 
-    // printdebug("<Sorting data went successfully>\n\n");
+    // fprintf(stderr, "<Sorting data went successfully>\n\n");
 
     return 0;
 }

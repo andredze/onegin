@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
-#define printdebug(a) fprintf(stderr, a)
-
 typedef struct LinePointers {
     char* start;
     char* end;
