@@ -3,8 +3,6 @@
 
 const char INPUT_FILEPATH[] = "onegin.txt";
 
-const char SORTED_BYSTART_FILEPATH[] = "sorted_by_start.txt";
-
-const char SORTED_BYEND_FILEPATH[] = "sorted_by_end.txt";
+const char OUTPUT_PATH[] = "output.txt";
 
 #endif // CONFIG_H

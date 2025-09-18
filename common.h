@@ -9,15 +9,26 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
-typedef struct BufferData {
-    char* buffer;
-    size_t size;
-} Bufferdata_t;
-
-typedef struct InputFileInfo {
-    FILE* stream;
-    char* filepath;
-} InputFileInfo;
+// typedef struct Context {
+//     CmdArguments_t CmdArguments;
+//     InputFileInfo_t InputFileInfo;
+//     BufferData_t BufferData;
+// } Context_t;
+//
+// typedef struct CmdArguments {
+//     int argc;
+//     char* argv[];
+// } CmdArguments_t;
+//
+// typedef struct BufferData {
+//     char* buffer;
+//     size_t size;
+// } BufferData_t;
+//
+// typedef struct InputFileInfo {
+//     FILE* stream;
+//     char* filepath;
+// } InputFileInfo_t;
 
 typedef struct LinePointers {
     char* start;

@@ -23,11 +23,9 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    if (process_text(ptrdata, lines_count, "by_start"))
-    {
-        return 1;
-    }
-    if (process_text(ptrdata, lines_count, "by_end"))
+    const char* output_path = OUTPUT_PATH;
+
+    if (process_all(output_path, ptrdata, buffer, lines_count))
     {
         return 1;
     }

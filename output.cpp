@@ -1,24 +1,16 @@
 #include "output.h"
 
-int print_text(LinePointers_t* ptrdata, int lines_count, const char* output_path)
+int print_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
 {
     assert(ptrdata != NULL);
-    assert(output_path != NULL);
+    assert(output_stream != NULL);
 
     // fprintf(stderr, "<Printing text>\n");
 
-    FILE* output_stream = NULL;
-
-    if (open_output(&output_stream, output_path))
-    {
-        return 1;
-    }
     if (write_text(ptrdata, lines_count, output_stream))
     {
         return 1;
     }
-
-    fclose(output_stream);
 
     // fprintf(stderr, "<Printing text to file went successfully>\n");
 
@@ -46,7 +38,39 @@ int write_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
             fprintf(stderr, "\n<Error with printing the file>\n");
             return 1;
         }
-        fputc('\n', output_stream);
+        if (fputc('\n', output_stream) == EOF)
+        {
+            fprintf(stderr, "\n<Error with printing the file>\n");
+            return 1;
+        }
+    }
+    fputc('\n', output_stream);
+    return 0;
+}
+
+int print_poem(char* buffer, int lines_count, FILE* output_stream)
+{
+    assert(buffer != NULL);
+    assert(lines_count >= 0);
+    assert(output_stream != NULL);
+
+    char* ptr = buffer;
+
+    for (int line_num = 0; line_num < lines_count; line_num++)
+    {
+        assert(ptr != NULL);
+
+        if (fputs(ptr, output_stream) == EOF)
+        {
+            fprintf(stderr, "\n<Error with printing the original file>\n");
+            return 1;
+        }
+        if (fputc('\n', output_stream) == EOF)
+        {
+            fprintf(stderr, "\n<Error with printing the original file>\n");
+            return 1;
+        }
+        ptr = strchr(ptr, '\0') + 1;
     }
     return 0;
 }
