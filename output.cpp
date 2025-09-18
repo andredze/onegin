@@ -4,7 +4,7 @@ int print_text(LinePointers_t* ptrdata, int lines_count)
 {
     assert(ptrdata != NULL);
 
-    printf("<Printing text>\n");
+    fprintf(stderr, "<Printing text>\n");
 
     FILE* output = NULL;
 
@@ -19,7 +19,7 @@ int print_text(LinePointers_t* ptrdata, int lines_count)
 
     fclose(output);
 
-    printf("<Printing text to file went successfully>\n");
+    fprintf(stderr, "<Printing text to file went successfully>\n");
 
     return 0;
 }
@@ -31,7 +31,7 @@ int open_output(FILE** output)
 
     if (*output == NULL)
     {
-        printf("\n<Error with opening the file>\n");
+        fprintf(stderr, "\n<Error with opening the file>\n");
         return 1;
     }
     return 0;
@@ -43,7 +43,7 @@ int write_text(LinePointers_t* ptrdata, int lines_count, FILE* output)
     {
         if (fputs(ptrdata[line_num].start, output) == EOF)
         {
-            printf("\n<Error with printing the file>\n");
+            fprintf(stderr, "\n<Error with printing the file>\n");
             return 1;
         }
     }

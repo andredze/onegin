@@ -1,10 +1,27 @@
 #include "sort.h"
 
-int bubble_sort_text(LinePointers_t* ptrdata, int lines_count)
+int qsort_text(LinePointers_t* ptrdata, int lines_count,
+               int (*compare) (const void *, const void *))
 {
     assert(ptrdata != NULL);
+    assert(compare != NULL);
 
-    printf("<Sorting data>\n");
+    fprintf(stderr, "<Sorting data>\n");
+
+    qsort(ptrdata, lines_count, sizeof(LinePointers_t), compare);
+
+    fprintf(stderr, "<Sorting data went successfully>\n\n");
+
+    return 0;
+}
+
+int bubble_sort_text(LinePointers_t* ptrdata, int lines_count,
+                     int (*compare) (const void *, const void *))
+{
+    assert(ptrdata != NULL);
+    assert(compare != NULL);
+
+    fprintf(stderr, "<Sorting data>\n");
 
     int first = 0;
     int second = 0;
@@ -13,14 +30,14 @@ int bubble_sort_text(LinePointers_t* ptrdata, int lines_count)
     {
         for (second = first + 1; second < lines_count; second++)
         {
-            if (strcmp_by_end(&(ptrdata[first]), &(ptrdata[second])) > 0)
+            if (compare(&(ptrdata[first]), &(ptrdata[second])) > 0)
             {
                 swap_line_pointers(&(ptrdata[first]), &(ptrdata[second]));
             }
         }
     }
 
-    printf("<Sorting data went successfully>\n\n");
+    fprintf(stderr, "<Sorting data went successfully>\n\n");
 
     return 0;
 }

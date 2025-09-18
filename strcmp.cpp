@@ -13,6 +13,7 @@ int strcmp_by_start(const void* line_ptrs_1, const void* line_ptrs_2)
 
     for (; str1[i1] != '\0' && str2[i2] != '\0'; i1++, i2++)
     {
+        // skip non letters
         while (!(isalpha(str1[i1])))
         {
             i1++;
@@ -46,6 +47,7 @@ int strcmp_by_end(const void* line_ptrs_1, const void* line_ptrs_2)
 
     for (; start1 <= str1 && start2 <= str2; str1--, str2--)
     {
+        // skip non letters
         while (!(isalpha(*str1)))
         {
             str1--;
