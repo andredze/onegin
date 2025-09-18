@@ -58,7 +58,7 @@ int open_file(int argc, char* argv[], char** filepath, FILE** stream)
     *stream = fopen(*filepath, "rb");
     if (*stream == NULL)
     {
-        fprintf(stderr, "\n<Can not open the file>\n");
+        fprintf(stderr, "\n<Can not open the file %s>\n", *filepath);
         return 1;
     }
     return 0;

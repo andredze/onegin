@@ -9,6 +9,16 @@
 #include <stdlib.h>
 #include <sys\stat.h>
 
+typedef struct BufferData {
+    char* buffer;
+    size_t size;
+} Bufferdata_t;
+
+typedef struct InputFileInfo {
+    FILE* stream;
+    char* filepath;
+} InputFileInfo;
+
 typedef struct LinePointers {
     char* start;
     char* end;
