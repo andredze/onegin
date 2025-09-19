@@ -1,7 +1,7 @@
 #include "common.h"
 #include "strcmp.h"
 #include "input.h"
-#include "parse.h"
+#include "buffer.h"
 #include "ptrdata.h"
 #include "process.h"
 
@@ -15,17 +15,17 @@ int main(int argc, char* argv[])
                          .PtrDataParams =  {.ptrdata = NULL,
                                             .lines_count = 0},
                          .OutputFileInfo = {.stream = NULL,
-                                            .filepath = NULL}};
+                                            .filepath = NULL}}; // поменять на {}
     get_filepath(argc, argv, &Context);
 
     if (open_file(&Context))
     {
-        return 1;
+        return EXIT_FAILURE;
     }
-    if (parse_text(&Context))
+    if (parse_text(&Context)) // enum oneginstatus success - failure
     {
         fprintf(stderr, "<Error during parsing text>\n");
-        return 1;
+        return EXIT_FAILURE;
     }
     fclose(Context.InputFileInfo.stream);
 
@@ -34,17 +34,17 @@ int main(int argc, char* argv[])
     if (make_ptrdata(&Context))
     {
         fprintf(stderr, "<ptr_data is a NULL pointer>\n");
-        return 1;
+        return EXIT_FAILURE;
     }
 
     if (open_output(&Context))
     {
-        return 1;
+        return EXIT_FAILURE;
     }
     if (process_all(&Context))
     {
         fclose(Context.OutputFileInfo.stream);
-        return 1;
+        return EXIT_FAILURE;
     }
 
     fclose(Context.OutputFileInfo.stream);
@@ -52,5 +52,5 @@ int main(int argc, char* argv[])
 
     fprintf(stderr, "<Programm ran>");
 
-    return 0;
+    return EXIT_SUCCESS;
 }

@@ -1,6 +1,8 @@
 CXX = g++
 
-CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
+CXXFLAGS =  -Iinclude -Iinclude/input -Iinclude/output -Iinclude/parse \
+			-Iinclude/process -Iinclude/sort -Iinclude/parse \
+			-Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 			-Wfloat-equal -Winline -Wunreachable-code -Wmissing-declarations \
 			-Wmissing-include-dirs -Wswitch-enum -Wswitch-default -Weffc++ \
 			-Wmain -Wextra -Wall -g -pipe -fexceptions -Wcast-qual -Wconversion \
@@ -10,14 +12,14 @@ CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 			-Wstrict-null-sentinel -Wtype-limits -Wwrite-strings -Werror=vla -D_DEBUG \
 			-D_EJUDGE_CLIENT_SIDE
 
-SOURCES = main.cpp \
-		  strcmp.cpp \
-		  parse.cpp \
-		  input.cpp \
-		  ptrdata.cpp \
-		  sort.cpp \
-		  output.cpp \
-		  process.cpp
+SOURCES = source/main.cpp \
+		  source/sort/strcmp.cpp \
+		  source/parse/buffer.cpp \
+		  source/input/input.cpp \
+		  source/parse/ptrdata.cpp \
+		  source/sort/sort.cpp \
+		  source/output/output.cpp \
+		  source/process/process.cpp
 
 EXECUTABLE = run.exe
 

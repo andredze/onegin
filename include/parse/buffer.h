@@ -1,5 +1,5 @@
-#ifndef PARSE_H
-#define PARSE_H
+#ifndef BUFFER_H
+#define BUFFER_H
 
 #include "common.h"
 #include "input.h"
@@ -10,4 +10,4 @@ int allocate_buffer(Context_t* Context);
 
 int fill_buffer(Context_t* Context);
 
-#endif // PARSE_H
+#endif // BUFFER_H

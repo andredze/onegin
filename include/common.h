@@ -1,7 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include <TXLib.h>
+// #include <TXLib.h>
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -40,6 +40,7 @@ typedef struct Context {
     BufferData_t BufferData;
     PtrDataParams_t PtrDataParams;
     OutputFileInfo_t OutputFileInfo;
+    // enum
 } Context_t;
 
 #endif // COMMON_H
