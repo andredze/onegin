@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-int make_ptrdata(Context_t* Context);
+int parse_text(Context_t* Context);
 
 int count_lines(Context_t* Context);
 

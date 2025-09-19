@@ -1,6 +1,6 @@
 #include "ptrdata.h"
 
-int make_ptrdata(Context_t* Context)
+int parse_text(Context_t* Context)
 {
     assert(Context != NULL);
 

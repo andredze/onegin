@@ -4,7 +4,7 @@
 #include "common.h"
 #include "config.h"
 
-void get_filepath(int argc, char* argv[], Context_t* Context);
+void set_filepath(int argc, char* argv[], Context_t* Context);
 
 int open_file(Context_t* Context);
 

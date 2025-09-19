@@ -1,6 +1,6 @@
 #include "input.h"
 
-void get_filepath(int argc, char* argv[], Context_t* Context)
+void set_filepath(int argc, char* argv[], Context_t* Context)
 {
     assert(argv != NULL);
     assert(argc >= 1);

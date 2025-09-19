@@ -1,6 +1,6 @@
 #include "buffer.h"
 
-int parse_text(Context_t* Context)
+int read_text(Context_t* Context)
 {
     assert(Context != NULL);
 

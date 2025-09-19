@@ -7,22 +7,14 @@
 
 int main(int argc, char* argv[])
 {
-    Context_t Context = {.InputFileInfo =  {.stream = NULL,
-                                            .filepath = NULL,
-                                            .size = 0},
-                         .BufferData =     {.buffer = NULL,
-                                            .lines_count = 0},
-                         .PtrDataParams =  {.ptrdata = NULL,
-                                            .lines_count = 0},
-                         .OutputFileInfo = {.stream = NULL,
-                                            .filepath = NULL}}; // поменять на {}
-    get_filepath(argc, argv, &Context);
+    Context_t Context = {};
+    set_filepath(argc, argv, &Context);
 
     if (open_file(&Context))
     {
         return EXIT_FAILURE;
     }
-    if (parse_text(&Context)) // enum oneginstatus success - failure
+    if (read_text(&Context)) // enum oneginstatus success - failure
     {
         fprintf(stderr, "<Error during parsing text>\n");
         return EXIT_FAILURE;
@@ -31,7 +23,7 @@ int main(int argc, char* argv[])
 
     // puts(Context.BufferData.buffer);
 
-    if (make_ptrdata(&Context))
+    if (parse_text(&Context))
     {
         fprintf(stderr, "<ptr_data is a NULL pointer>\n");
         return EXIT_FAILURE;
