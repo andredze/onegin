@@ -12,6 +12,7 @@ CXXFLAGS = -Wshadow -Winit-self -Wredundant-decls -Wcast-align -Wundef \
 
 SOURCES = main.cpp \
 		  strcmp.cpp \
+		  parse.cpp \
 		  input.cpp \
 		  ptrdata.cpp \
 		  sort.cpp \

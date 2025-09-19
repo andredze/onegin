@@ -1,37 +1,54 @@
 #include "common.h"
 #include "strcmp.h"
 #include "input.h"
+#include "parse.h"
 #include "ptrdata.h"
 #include "process.h"
 
 int main(int argc, char* argv[])
 {
-    int lines_count = 0;
+    Context_t Context = {.InputFileInfo =  {.stream = NULL,
+                                            .filepath = NULL,
+                                            .size = 0},
+                         .BufferData =     {.buffer = NULL,
+                                            .lines_count = 0},
+                         .PtrDataParams =  {.ptrdata = NULL,
+                                            .lines_count = 0},
+                         .OutputFileInfo = {.stream = NULL,
+                                            .filepath = NULL}};
+    get_filepath(argc, argv, &Context);
 
-    char* buffer = parse_text(argc, argv);
-    if (buffer == NULL)
+    if (open_file(&Context))
+    {
+        return 1;
+    }
+    if (parse_text(&Context))
     {
         fprintf(stderr, "<Error during parsing text>\n");
         return 1;
     }
-    // puts(buffer);
+    fclose(Context.InputFileInfo.stream);
 
-    // LinePointers_t* ptrdata = NULL;
-    LinePointers_t* ptrdata = make_ptrdata(buffer, &lines_count);
-    if (ptrdata == NULL)
+    // puts(Context.BufferData.buffer);
+
+    if (make_ptrdata(&Context))
     {
         fprintf(stderr, "<ptr_data is a NULL pointer>\n");
         return 1;
     }
 
-    const char* output_path = OUTPUT_PATH;
-
-    if (process_all(output_path, ptrdata, buffer, lines_count))
+    if (open_output(&Context))
     {
         return 1;
     }
+    if (process_all(&Context))
+    {
+        fclose(Context.OutputFileInfo.stream);
+        return 1;
+    }
 
-    free(ptrdata);
+    fclose(Context.OutputFileInfo.stream);
+    free(Context.PtrDataParams.ptrdata);
 
     fprintf(stderr, "<Programm ran>");
 

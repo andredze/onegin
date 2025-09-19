@@ -1,13 +1,14 @@
 #include "output.h"
 
-int print_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
+int print_text(Context_t* Context)
 {
-    assert(ptrdata != NULL);
-    assert(output_stream != NULL);
+    assert(Context != NULL);
+    assert(Context->PtrDataParams.ptrdata != NULL);
+    assert(Context->OutputFileInfo.stream != NULL);
 
     // fprintf(stderr, "<Printing text>\n");
 
-    if (write_text(ptrdata, lines_count, output_stream))
+    if (write_text(Context))
     {
         return 1;
     }
@@ -17,60 +18,80 @@ int print_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
     return 0;
 }
 
-int open_output(FILE** output_stream, const char* output_path)
+int open_output(Context_t* Context)
 {
-    *output_stream = fopen(output_path, "w");
+    assert(Context != NULL);
+    assert(Context->OutputFileInfo.filepath != NULL);
 
-    if (*output_stream == NULL)
+    FILE* stream = fopen(Context->OutputFileInfo.filepath, "w");
+
+    if (stream == NULL)
     {
         fprintf(stderr, "\n<Error with opening the file>\n");
         return 1;
     }
+    Context->OutputFileInfo.stream = stream;
+
     return 0;
 }
 
-int write_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream)
+int write_text(Context_t* Context)
 {
-    for (int line_num = 0; line_num < lines_count; line_num++)
+    assert(Context != NULL);
+    assert(Context->OutputFileInfo.stream != NULL);
+
+    FILE* stream = Context->OutputFileInfo.stream;
+    LinePointers_t* ptrdata = Context->PtrDataParams.ptrdata;
+    int lines_count = Context->PtrDataParams.lines_count;
+
+    for (int i = 0; i < lines_count; i++)
     {
-        if (fputs(ptrdata[line_num].start, output_stream) == EOF)
+        if (fputs(ptrdata[i].start, stream) == EOF)
         {
             fprintf(stderr, "\n<Error with printing the file>\n");
             return 1;
         }
-        if (fputc('\n', output_stream) == EOF)
+        if (fputc('\n', stream) == EOF)
         {
             fprintf(stderr, "\n<Error with printing the file>\n");
             return 1;
         }
     }
-    fputc('\n', output_stream);
+    fputc('\n', stream);
+
     return 0;
 }
 
-int print_poem(char* buffer, int lines_count, FILE* output_stream)
+int print_poem(Context_t* Context)
 {
-    assert(buffer != NULL);
-    assert(lines_count >= 0);
-    assert(output_stream != NULL);
+    assert(Context != NULL);
+    assert(Context->BufferData.lines_count >= 0);
+    assert(Context->OutputFileInfo.stream != NULL);
 
-    char* ptr = buffer;
+    char* ptr = Context->BufferData.buffer;
+    int lines_count = Context->BufferData.lines_count;
+    FILE* stream = Context->OutputFileInfo.stream;
 
-    for (int line_num = 0; line_num < lines_count; line_num++)
+    for (int i = 0; i < lines_count; i++)
     {
         assert(ptr != NULL);
 
-        if (fputs(ptr, output_stream) == EOF)
+        if (fputs(ptr, stream) == EOF)
         {
             fprintf(stderr, "\n<Error with printing the original file>\n");
             return 1;
         }
-        if (fputc('\n', output_stream) == EOF)
+        if (fputc('\n', stream) == EOF)
         {
             fprintf(stderr, "\n<Error with printing the original file>\n");
             return 1;
         }
         ptr = strchr(ptr, '\0') + 1;
+        // for compatibility with windows files
+        if (*ptr == '\0')
+        {
+            ptr++;
+        }
     }
     return 0;
 }

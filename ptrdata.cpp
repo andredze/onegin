@@ -1,42 +1,34 @@
 #include "ptrdata.h"
 
-LinePointers_t* make_ptrdata(char* buffer, int* main_lines_count)
+int make_ptrdata(Context_t* Context)
 {
-    assert(buffer != NULL);
-    assert(main_lines_count != NULL);
+    assert(Context != NULL);
 
-    int lines_count = 0;
-    if (count_lines(buffer, &lines_count))
+    if (count_lines(Context))
     {
-        return NULL;
+        return 1;
     }
-    *main_lines_count = lines_count;
-
-    LinePointers_t* ptrdata = NULL;
-    if (allocate_ptrdata(&ptrdata, lines_count))
+    if (allocate_ptrdata(Context))
     {
-        return NULL;
+        return 1;
     }
-
-    if (fill_ptrdata(buffer, ptrdata, lines_count))
+    if (fill_ptrdata(Context))
     {
-        return NULL;
+        return 1;
     }
 
-    return ptrdata;
+    return 0;
 }
 
-int count_lines(char* buffer, int* ptr_lines_count)
+int count_lines(Context_t* Context)
 {
-    assert(buffer != NULL);
-    assert(ptr_lines_count != NULL);
+    assert(Context != NULL);
 
     // fprintf(stderr, "<Counting lines>\n");
 
-    char* ptr = buffer;
-    int lines_count = 0;
-
+    char* ptr = Context->BufferData.buffer;
     char* endptr = strchr(ptr, '\0');
+    int lines_count = 0;
     // fprintf(stderr, "endptr = %p; endch = %d\n", endptr, *endptr);
 
     while (ptr < endptr)
@@ -49,42 +41,49 @@ int count_lines(char* buffer, int* ptr_lines_count)
 
         // fprintf(stderr, "lines_count = %d; ptr = %p; lett = %d; nextlett = %d\n",
         //         lines_count, ptr, *ptr, *(ptr + 1));
+
         ptr++; // skip '\n'
         lines_count += 1;
     }
 
-    *ptr_lines_count = lines_count;
+    Context->BufferData.lines_count = lines_count;
+    Context->PtrDataParams.lines_count = lines_count;
 
     // fprintf(stderr, "<Counted \\n>\n");
     return 0;
 }
 
-int allocate_ptrdata(LinePointers_t** ptrdata, int lines_count)
+int allocate_ptrdata(Context_t* Context)
 {
-    assert(ptrdata != NULL);
+    assert(Context != NULL);
 
     // fprintf(stderr, "<Allocating memory>\n");
 
-    *ptrdata = (LinePointers_t*) calloc(lines_count, sizeof(LinePointers_t));
+    LinePointers_t* ptrdata = (LinePointers_t*)
+                              calloc(Context->BufferData.lines_count,
+                                     sizeof(LinePointers_t));
     if (ptrdata == NULL)
     {
         fprintf(stderr, "\n<Memory allocation for ptrdata failed>\n");
         return 1;
     }
+    Context->PtrDataParams.ptrdata = ptrdata;
 
     // fprintf(stderr, "<Allocating memory for ptrdata went successfully>\n");
     return 0;
 }
 
-int fill_ptrdata(char* buffer, LinePointers_t* ptrdata, int lines_count)
+int fill_ptrdata(Context_t* Context)
 {
-    assert(buffer != NULL);
-    assert(ptrdata != NULL);
+    assert(Context != NULL);
 
     // fprintf(stderr, "<Filling ptrdata>\n");
 
-    // fill ptrdata and switch \n to \0
-    char* ptr = buffer;
+    // fill ptrdata and switch \r and \n to \0
+    char* ptr = Context->BufferData.buffer;
+    LinePointers_t* ptrdata = Context->PtrDataParams.ptrdata;
+    int lines_count = Context->BufferData.lines_count;
+
     for (int line_num = 0; line_num < lines_count; line_num++)
     {
         ptrdata[line_num].start = ptr;
@@ -99,9 +98,17 @@ int fill_ptrdata(char* buffer, LinePointers_t* ptrdata, int lines_count)
             fprintf(stderr, "\n<Can not find \\n in buffer>\n");
             return 1;
         }
-        *(ptr - 1) = '\0'; // switch \n to \0
 
-        ptrdata[line_num].end = ptr - 2;
+        *(ptr - 1) = '\0'; // switch \n to \0
+        if (*(ptr - 2) == '\r') // if windows file (\r\n at end)
+        {
+            *(ptr - 2) = '\0'; // switch \r to \0
+            ptrdata[line_num].end = ptr - 3;
+        }
+        else // if no \r
+        {
+            ptrdata[line_num].end = ptr - 2;
+        }
     }
 
     // fprintf(stderr, "<Filling ptrdata went successfully>\n\n");

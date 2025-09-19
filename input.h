@@ -4,14 +4,10 @@
 #include "common.h"
 #include "config.h"
 
-char* parse_text(int argc, char* argv[]);
+void get_filepath(int argc, char* argv[], Context_t* Context);
 
-int open_file(int argc, char* argv[], char** filepath, FILE** stream);
+int open_file(Context_t* Context);
 
-int count_size(char* filepath, size_t* size);
-
-int allocate_buffer(char** buffer, size_t size);
-
-int fill_buffer(char* buffer, size_t size, FILE* stream);
+int count_size(Context_t* Context);
 
 #endif // INPUT_H

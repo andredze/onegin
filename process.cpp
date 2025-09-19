@@ -1,43 +1,32 @@
 #include "process.h"
 
-int process_all(const char* output_path, LinePointers_t* ptrdata,
-                char* buffer, int lines_count)
+int process_all(Context_t* Context)
 {
-    FILE* output_stream = NULL;
+    assert(Context != NULL);
 
-    if (open_output(&output_stream, output_path))
+    if (process_text(Context, "by_start"))
     {
         return 1;
     }
-
-    if (process_text(output_stream, ptrdata, buffer, lines_count, "by_start"))
+    if (process_text(Context, "by_end"))
     {
-        fclose(output_stream);
         return 1;
     }
-    if (process_text(output_stream, ptrdata, buffer, lines_count, "by_end"))
+    if (process_text(Context, "original"))
     {
-        fclose(output_stream);
-        return 1;
-    }
-    if (process_text(output_stream, ptrdata, buffer, lines_count, "original"))
-    {
-        fclose(output_stream);
         return 1;
     }
 
-    fclose(output_stream);
     return 0;
 }
 
-int process_text(FILE* output_stream, LinePointers_t* ptrdata, char* buffer,
-                 int lines_count, const char* method)
+int process_text(Context_t* Context, const char* method)
 {
-    assert(ptrdata != NULL);
     assert(method != NULL);
+    assert(Context != NULL);
+    assert(Context->PtrDataParams.ptrdata != NULL);
 
     int (* compare) (const void*, const void*) = NULL;
-
     int original = 0;
 
     if (strcmp(method, "by_start") == 0)
@@ -60,7 +49,7 @@ int process_text(FILE* output_stream, LinePointers_t* ptrdata, char* buffer,
 
     if (original == 0)
     {
-        if (qsort_text(ptrdata, lines_count, compare))
+        if (qsort_text(Context, compare))
         {
             fprintf(stderr, "<Error during sorting>\n");
             return 1;
@@ -69,15 +58,16 @@ int process_text(FILE* output_stream, LinePointers_t* ptrdata, char* buffer,
 
     if (original == 1)
     {
-        print_poem(buffer, lines_count, output_stream);
+        print_poem(Context);
     }
     else
     {
-        if (print_text(ptrdata, lines_count, output_stream))
+        if (print_text(Context))
         {
             fprintf(stderr, "<Error during printing>\n");
             return 1;
         }
     }
+
     return 0;
 }

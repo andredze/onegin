@@ -3,12 +3,12 @@
 
 #include "common.h"
 
-int print_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream);
+int print_text(Context_t* Context);
 
-int open_output(FILE** output_stream, const char* output_path);
+int open_output(Context_t* Context);
 
-int write_text(LinePointers_t* ptrdata, int lines_count, FILE* output_stream);
+int write_text(Context_t* Context);
 
-int print_poem(char* buffer, int lines_count, FILE* output_stream);
+int print_poem(Context_t* Context);
 
 #endif // OUTPUT_H
