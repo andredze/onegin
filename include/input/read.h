@@ -1,5 +1,5 @@
-#ifndef BUFFER_H
-#define BUFFER_H
+#ifndef READ_H
+#define READ_H
 
 #include "common.h"
 #include "input.h"
@@ -10,4 +10,4 @@ int allocate_buffer(Context_t* Context);
 
 int fill_buffer(Context_t* Context);
 
-#endif // BUFFER_H
+#endif // READ_H

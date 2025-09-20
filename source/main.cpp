@@ -1,8 +1,8 @@
 #include "common.h"
 #include "strcmp.h"
 #include "input.h"
-#include "buffer.h"
-#include "ptrdata.h"
+#include "read.h"
+#include "parse.h"
 #include "process.h"
 
 int main(int argc, char* argv[])

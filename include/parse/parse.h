@@ -1,5 +1,5 @@
-#ifndef PTRDATA_H
-#define PTRDATA_H
+#ifndef PARSE_H
+#define PARSE_H
 
 #include "common.h"
 
@@ -11,4 +11,4 @@ int allocate_ptrdata(Context_t* Context);
 
 int fill_ptrdata(Context_t* Context);
 
-#endif // PTRDATA_H
+#endif // PARSE_H

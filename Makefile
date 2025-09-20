@@ -14,12 +14,12 @@ CXXFLAGS =  -Iinclude -Iinclude/input -Iinclude/output -Iinclude/parse \
 
 SOURCES = source/main.cpp \
 		  source/sort/strcmp.cpp \
-		  source/parse/buffer.cpp \
-		  source/input/input.cpp \
-		  source/parse/ptrdata.cpp \
 		  source/sort/sort.cpp \
-		  source/output/output.cpp \
-		  source/process/process.cpp
+		  source/input/input.cpp \
+		  source/input/read.cpp \
+		  source/parse/parse.cpp \
+		  source/process/process.cpp \
+		  source/output/output.cpp
 
 EXECUTABLE = run.exe
 
