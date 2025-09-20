@@ -24,22 +24,17 @@ typedef struct PtrDataParams {
     int lines_count;
 } PtrDataParams_t;
 
-typedef struct InputFileInfo {
+typedef struct FileInfo {
     FILE* stream;
     const char* filepath;
     size_t size;
-} InputFileInfo_t;
-
-typedef struct OutputFileInfo {
-    FILE* stream;
-    const char* filepath;
-} OutputFileInfo_t;
+} FileInfo_t;
 
 typedef struct Context {
-    InputFileInfo_t InputFileInfo;
+    FileInfo_t InputFileInfo;
     BufferData_t BufferData;
     PtrDataParams_t PtrDataParams;
-    OutputFileInfo_t OutputFileInfo;
+    FileInfo_t OutputFileInfo;
     // enum
 } Context_t;
 
