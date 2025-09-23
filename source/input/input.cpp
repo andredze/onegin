@@ -24,6 +24,30 @@ void set_filepath(int argc, char* argv[], Context_t* Context)
     }
 }
 
+int read_and_parse_file(Context_t* Context)
+{
+    if (open_file(Context))
+    {
+        return EXIT_FAILURE;
+    }
+    if (read_text(Context)) // enum oneginstatus success - failure
+    {
+        fprintf(stderr, "<Error during parsing text>\n");
+        return EXIT_FAILURE;
+    }
+    fclose(Context->InputFileInfo.stream);
+
+    // puts(Context.BufferData.buffer);
+
+    if (parse_text(Context))
+    {
+        fprintf(stderr, "<ptr_data is a NULL pointer>\n");
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
+}
+
 int open_file(Context_t* Context)
 {
     assert(Context != NULL);

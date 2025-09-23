@@ -1,13 +1,5 @@
-#ifndef COMMON_H
-#define COMMON_H
-
-// #include <TXLib.h>
-#include <assert.h>
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
-#include <stdlib.h>
-#include <sys\stat.h>
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
 
 typedef struct LinePointers {
     char* start;
@@ -38,4 +30,4 @@ typedef struct Context {
     // enum
 } Context_t;
 
-#endif // COMMON_H
+#endif // STRUCTURES_H

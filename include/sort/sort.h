@@ -1,7 +1,8 @@
 #ifndef SORT_H
 #define SORT_H
 
-#include "common.h"
+#include "libraries.h"
+#include "structures.h"
 #include "strcmp.h"
 
 int qsort_text(Context_t* Context,

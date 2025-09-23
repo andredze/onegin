@@ -1,7 +1,8 @@
 #ifndef STRCMP_H
 #define STRCMP_H
 
-#include "common.h"
+#include "libraries.h"
+#include "structures.h"
 
 int strcmp_by_start(const void* line_ptrs_1,
                     const void* line_ptrs_2);

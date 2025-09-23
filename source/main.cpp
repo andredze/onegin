@@ -1,34 +1,18 @@
-#include "common.h"
-#include "strcmp.h"
+#include "libraries.h"
+#include "structures.h"
 #include "input.h"
-#include "read.h"
-#include "parse.h"
 #include "process.h"
+#include "output.h"
 
 int main(int argc, char* argv[])
 {
     Context_t Context = {};
     set_filepath(argc, argv, &Context);
 
-    if (open_file(&Context))
+    if (read_and_parse_file(&Context))
     {
         return EXIT_FAILURE;
     }
-    if (read_text(&Context)) // enum oneginstatus success - failure
-    {
-        fprintf(stderr, "<Error during parsing text>\n");
-        return EXIT_FAILURE;
-    }
-    fclose(Context.InputFileInfo.stream);
-
-    // puts(Context.BufferData.buffer);
-
-    if (parse_text(&Context))
-    {
-        fprintf(stderr, "<ptr_data is a NULL pointer>\n");
-        return EXIT_FAILURE;
-    }
-
     if (open_output(&Context))
     {
         return EXIT_FAILURE;

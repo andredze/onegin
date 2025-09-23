@@ -1,7 +1,8 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include "common.h"
+#include "libraries.h"
+#include "structures.h"
 
 int print_text(Context_t* Context);
 

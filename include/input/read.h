@@ -1,7 +1,8 @@
 #ifndef READ_H
 #define READ_H
 
-#include "common.h"
+#include "libraries.h"
+#include "structures.h"
 #include "input.h"
 
 int read_text(Context_t* Context);

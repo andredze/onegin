@@ -1,7 +1,8 @@
 #ifndef PARSE_H
 #define PARSE_H
 
-#include "common.h"
+#include "libraries.h"
+#include "structures.h"
 
 int parse_text(Context_t* Context);
 

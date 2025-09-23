@@ -18,10 +18,18 @@ int strcmp_by_start(const void* line_ptrs_1,
         while (!(isalpha(str1[i1])))
         {
             i1++;
+            if (str1[i1] == '\0')
+            {
+                break;
+            }
         }
         while (!(isalpha(str2[i2])))
         {
             i2++;
+            if (str2[i2] == '\0')
+            {
+                break;
+            }
         }
 
         if (tolower(str1[i1]) != tolower(str2[i2]))
@@ -55,10 +63,18 @@ int strcmp_by_end(const void* line_ptrs_1,
         while (!(isalpha(*str1)))
         {
             str1--;
+            if (*str1 == '\0')
+            {
+                break;
+            }
         }
         while (!(isalpha(*str2)))
         {
             str2--;
+            if (*str2 == '\0')
+            {
+                break;
+            }
         }
 
         letter1 = tolower(*str1);
